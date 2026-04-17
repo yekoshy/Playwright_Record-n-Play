@@ -2,7 +2,7 @@
 # 🎭 Playwright Record & Play Tutorial: SevenCharValidator
 
 Welcome to the Playwright testing tutorial for the [**SevenCharValidator**](https://testpages.eviltester.com/apps/7-char-val/) micro app! This repository demonstrates how to set up Playwright, record test scripts, run them with HTML reporting, debug using trace viewers, and scale your tests from a simple recorded script to data-driven, parallel execution.
-
+<a id="home"></a>
 ## 🔗 Jump to important sections
 * [Project Structure & Files Explanation](#project-structure)
 * [Step 1: Project Setup](#step-1)
@@ -37,7 +37,7 @@ Here is an overview of the files included in this repository and what they do:
 * [**`playwright-report_v3/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v3/): The custom HTML test report generated from the v3 parallel on different browsers script with retries for flaky testcases.
 
 ---
-
+[back](#home)
 <a id="step-1"></a>
 ## 🚀 Step 1: Project Setup
 
@@ -61,7 +61,7 @@ npm install -g cross-env
 
 ```
 ---
-
+[back](#home)
 <a id="step-2-codegen"></a>
 ## 🎥 Step 2: Record a Test Session (Codegen)
 
@@ -75,7 +75,7 @@ npx playwright codegen <urllink> -o sevenCharVal_test.spec.ts
 * **`-o <filename>`**: Tells Playwright to output the generated code directly into a specific file.
 
 ---
-
+[back](#home)
 <a id="step-2-1"></a>
 ## 🤖 Step 2.1: Scaling to Data-Driven & Parallel Execution
 
@@ -113,7 +113,7 @@ The configuration in `config/playwright.config.ts` controls:
 
 *Note: When using parallel execution, multiple browser contexts and windows may open at once, drastically reducing the total test execution time.*
 
-
+[back](#home)
 <a id="step-3"></a>
 ## 🏃 Step 3: Running Tests & Generating Reports
 
@@ -159,7 +159,7 @@ npx playwright show-report playwright-report_v2
 ```
 
 ---
-
+[back](#home)
 <a id="step-4"></a>
 ## 🐛 Step 4: Debugging with Traces (Video & Playback)
 
@@ -185,7 +185,7 @@ npx playwright show-trace test-results/sevenCharVal_test-test/trace.zip
 2. Drag and drop your `trace.zip` file directly into the webpage.
 
 
-
+[back](#home)
 <a id="step-5"></a>
 ## 🔄 Step 5: Git Commands & Workflow
 
@@ -218,3 +218,4 @@ git remote add origin https://github.com/yekoshy/Playwright_Record-n-Play.git
 # 6. Push the changes from your local repository to GitHub (-u sets the upstream link)
 git push -u origin main
 ```
+[back](#home)
