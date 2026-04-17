@@ -18,13 +18,13 @@ Here is an overview of the files included in this repository and what they do:
 ### Test Scripts
 * **`sevenCharVal_test.spec.ts` (v1)**: The simple, basic recorded steps generated directly from Playwright's Codegen tool.
 * **`sevenCharVal_v2_test.spec.ts` (v2)**: Advanced script using the recorded steps to dynamically loop through all test cases provided in `testcases.json`.
-* **`sevenCharVal_v3_test.spec.ts` (v3)**: Highly optimized script that utilizes Playwright's **parallel execution** to loop through the generated test cases simultaneously, speeding up the test run.
+* **`config/playwright.config.ts` (v3)**: Shared Playwright configuration for cross-browser/device execution, retries, and parallel workers.
 
 ### Reports & Results
 * **`test-results/sevenCharVal_test-test/trace.zip`**: Contains the trace file (video, DOM snapshots, network requests) for debugging recorded steps.
 * [**`playwright-report/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report/): The HTML test report generated from running the v1 script (`sevenCharVal_test.spec.ts`).
 * [**`playwright-report_v2/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v2/): The custom HTML test report generated from the v2 script.
-* [**`playwright-report_v3/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v3/): The custom HTML test report generated from the v3 parallel script.
+* [**`playwright-report_v3/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v3/): The custom HTML test report generated from the v3 parallel on different browsers script with retries for flaky testcases.
 
 ---
 
@@ -41,8 +41,14 @@ npm install -D @playwright/test
 
 # Install supported browsers (Chromium, Firefox, WebKit)
 npx playwright install
-```
 
+# Install Node.js type definitions for TypeScript support in Playwright
+npm install --save-dev @types/node
+
+# Install cross-env so environment variables work across Windows/macOS/Linux
+npm install -g cross-env
+
+```
 ---
 
 ## 🎥 Step 2: Record a Test Session (Codegen)
@@ -81,27 +87,18 @@ test.describe('7-Character Validation Tests', () => {
 });
 ```
 
-### Version 3: Parallel Execution
-Running a loop for many test cases one by one can be slow. By default, Playwright runs tests in a single file sequentially (one after the other). To speed this up, we can tell Playwright to run the iterations in our loop simultaneously! 
+### Version 3: Parallel, Cross-Browser, and Device Execution
+Running a loop for many test cases one by one can be slow. By default, Playwright runs tests in a single file sequentially (one after the other), but you can speed it up by running the loop iterations simultaneously so the same data-driven scenario executes across different browsers and devices while Playwright handles retries for flaky failures.
 
-To do this, we simply add one configuration line inside our `test.describe` block:
+The configuration in `config/playwright.config.ts` controls:
 
-```typescript
-test.describe('7-Character Validation Tests', () => {
-  
-  // 👉 ADD THIS LINE: Tell Playwright to run tests in this file in parallel
-  test.describe.configure({ mode: 'parallel' });
+* **Browsers**: which browsers to launch (Chromium, Firefox, WebKit).
+* **Devices**: mobile or desktop device emulation profiles.
+* **Retries**: how many times to retry failed tests automatically.
+* **Workers**: how many tests can run in parallel at the same time.
 
-  // Loop through each test case...
-  for (const data of testData) {
-     test(`Test case: ${data.scenario}`, async ({ page }) => {
-         // Recorded steps...
-     });
-  }
-});
-```
-*Note: When using parallel execution, multiple browser windows will open and run your test cases at the exact same time, drastically reducing the total test execution time.*
 
+*Note: When using parallel execution, multiple browser contexts and windows may open at once, drastically reducing the total test execution time.*
 
 
 ## 🏃 Step 3: Running Tests & Generating Reports
@@ -117,6 +114,11 @@ To actually see the browser opening and clicking through the steps:
 ```bash
 npx playwright test sevenCharVal_test.spec.ts --headed
 ```
+### Config Execution
+Run the test using the shared Playwright config file so it applies the defined browsers, devices, retries, and workers:
+```bash
+npx playwright test sevenCharVal_test.spec.ts --config=config/playwright.config.ts
+```
 
 ### Generating an HTML Report
 To create a detailed HTML report of your test run:
@@ -129,7 +131,7 @@ By default, reports go to `playwright-report/`. If you want to run your v2 or v3
 
 ```powershell
 # Set custom output directory and run the test
-$env:PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report_v2"; npx playwright test sevenCharVal_v2_test.spec.ts --reporter=html
+ cross-env PLAYWRIGHT_HTML_OUTPUT_DIR=playwright-report_v2 npx playwright test sevenCharVal_v2_test.spec.ts --reporter=html
 ```
 
 ### Viewing the Report
