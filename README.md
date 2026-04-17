@@ -1,7 +1,7 @@
 
 # 🎭 Playwright Record & Play Tutorial: SevenCharValidator
 
-Welcome to the Playwright testing tutorial for the **SevenCharValidator** micro app! This repository demonstrates how to set up Playwright, record test scripts, run them with HTML reporting, debug using trace viewers, and scale your tests from a simple recorded script to data-driven, parallel execution.
+Welcome to the Playwright testing tutorial for the [**SevenCharValidator**](https://testpages.eviltester.com/apps/7-char-val/) micro app! This repository demonstrates how to set up Playwright, record test scripts, run them with HTML reporting, debug using trace viewers, and scale your tests from a simple recorded script to data-driven, parallel execution.
 
 ## 📂 Project Structure & Files Explanation
 
@@ -120,3 +120,36 @@ npx playwright show-trace test-results/sevenCharVal_test-test/trace.zip
 **Option 2: View Online in the Browser**
 1. Open [https://trace.playwright.dev/](https://trace.playwright.dev/)
 2. Drag and drop your `trace.zip` file directly into the webpage.
+
+
+
+## 🔄 Step 5: Git Commands & Workflow
+
+This part contains the commands used to initialize the local project as a Git repository, connect it to GitHub, and push code updates.
+
+### 1. First-Time Setup
+
+**Create New Repository on Github**
+1. Click "New Repository" on GitHub  
+2. Create <Folder_name>. This created an empty "remote" folder on GitHub's servers.
+
+**Run these commands in your terminal one by one. Make sure you are inside your project's root folder:**
+
+```bash
+# 1. Initialize the local directory as a new Git repository
+git init
+
+# 2. Add all your project files to the Git staging area
+git add .
+
+# 3. Commit the files you've added with a descriptive message
+git commit -m "Initial commit - Playwright Setup & Readme"
+
+# 4. Rename the default branch to 'main' (Standard GitHub practice)
+git branch -M main
+
+# 5. Connect your local repository to your remote GitHub repository
+git remote add origin https://github.com/yekoshy/Playwright_Record-n-Play.git
+
+# 6. Push the changes from your local repository to GitHub (-u sets the upstream link)
+git push -u origin main
