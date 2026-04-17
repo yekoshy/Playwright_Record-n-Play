@@ -55,7 +55,7 @@ npm install -g cross-env
 
 Playwright can generate test code for you by recording your browser actions. 
 
-Run the following command, replacing `<urllink>` with the actual URL of the SevenCharValidator micro app:
+Run the following command, replacing `<urllink>` with the actual URL of the [SevenCharValidator micro app](https://testpages.eviltester.com/apps/7-char-val/):
 
 ```bash
 npx playwright codegen <urllink> -o sevenCharVal_test.spec.ts
