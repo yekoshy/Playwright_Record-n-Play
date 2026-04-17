@@ -58,6 +58,52 @@ npx playwright codegen <urllink> -o sevenCharVal_test.spec.ts
 
 ---
 
+##  Step 2.1: Scaling to Data-Driven & Parallel Execution
+
+Once you have your basic recorded steps (from Step 2), you can scale your tests to run multiple scenarios automatically instead of writing a new test for every single scenario.
+
+### Version 2: Data-Driven Testing (DDT)
+Instead of hardcoding the test data, we created a `testcases.json` file. We can then wrap our recorded Playwright steps inside a standard JavaScript `for` loop. This allows Playwright to run the exact same steps over and over, replacing the input with data from the JSON file for each iteration.
+
+```typescript
+import { test, expect } from '@playwright/test';
+import testData from './testcases.json';
+
+test.describe('7-Character Validation Tests', () => {
+
+  // Loop through each test case in your JSON file
+  for (const data of testData) {
+     test(`Test case: ${data.scenario}`, async ({ page }) => {
+         // 👉 Paste your recorded steps here
+         // Replace hardcoded text with data.input
+     });
+  }
+});
+```
+
+### Version 3: Parallel Execution
+Running a loop for many test cases one by one can be slow. By default, Playwright runs tests in a single file sequentially (one after the other). To speed this up, we can tell Playwright to run the iterations in our loop simultaneously! 
+
+To do this, we simply add one configuration line inside our `test.describe` block:
+
+```typescript
+test.describe('7-Character Validation Tests', () => {
+  
+  // 👉 ADD THIS LINE: Tell Playwright to run tests in this file in parallel
+  test.describe.configure({ mode: 'parallel' });
+
+  // Loop through each test case...
+  for (const data of testData) {
+     test(`Test case: ${data.scenario}`, async ({ page }) => {
+         // Recorded steps...
+     });
+  }
+});
+```
+*Note: When using parallel execution, multiple browser windows will open and run your test cases at the exact same time, drastically reducing the total test execution time.*
+
+
+
 ## 🏃 Step 3: Running Tests & Generating Reports
 
 ### Basic Execution
