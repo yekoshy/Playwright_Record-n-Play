@@ -22,7 +22,7 @@ Timeout:  5000ms
 Call log:
   - Expect "toHaveValue" with timeout 5000ms
   - waiting for locator('input[name="validation_message"]')
-    9 × locator resolved to <input value="" type="text" onfocus="this.blur()" name="validation_message"/>
+    8 × locator resolved to <input value="" type="text" onfocus="this.blur()" name="validation_message"/>
       - unexpected value "Valid Value"
 
 ```
