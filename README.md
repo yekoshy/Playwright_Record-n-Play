@@ -22,9 +22,9 @@ Here is an overview of the files included in this repository and what they do:
 
 ### Reports & Results
 * **`test-results/sevenCharVal_test-test/trace.zip`**: Contains the trace file (video, DOM snapshots, network requests) for debugging recorded steps.
-* **`playwright-report/index.html`**: The HTML test report generated from running the v1 script (`sevenCharVal_test.spec.ts`).
-* **`playwright-report_v2/index.html`**: The custom HTML test report generated from the v2 script.
-* **`playwright-report_v3/index.html`**: The custom HTML test report generated from the v3 parallel script.
+* [**`playwright-report/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report/): The HTML test report generated from running the v1 script (`sevenCharVal_test.spec.ts`).
+* [**`playwright-report_v2/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v2/): The custom HTML test report generated from the v2 script.
+* [**`playwright-report_v3/index.html`**](https://yekoshy.github.io/Playwright_Record-n-Play/playwright-report_v3/): The custom HTML test report generated from the v3 parallel script.
 
 ---
 
