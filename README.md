@@ -18,7 +18,7 @@ Here is an overview of the files included in this repository and what they do:
 ### Test Scripts
 * **`sevenCharVal_test.spec.ts` (v1)**: The simple, basic recorded steps generated directly from Playwright's Codegen tool.
 * **`sevenCharVal_v2_test.spec.ts` (v2)**: Advanced script using the recorded steps to dynamically loop through all test cases provided in `testcases.json`.
-* **`config/playwright.config.ts` (v3)**: Shared Playwright configuration for cross-browser/device execution, retries, and parallel workers.
+* **`config/playwright.config.ts`**: Shared Playwright configuration for cross-browser/device execution, retries, and parallel workers.
 
 ### Reports & Results
 * **`test-results/sevenCharVal_test-test/trace.zip`**: Contains the trace file (video, DOM snapshots, network requests) for debugging recorded steps.
