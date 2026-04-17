@@ -3,6 +3,16 @@
 
 Welcome to the Playwright testing tutorial for the [**SevenCharValidator**](https://testpages.eviltester.com/apps/7-char-val/) micro app! This repository demonstrates how to set up Playwright, record test scripts, run them with HTML reporting, debug using trace viewers, and scale your tests from a simple recorded script to data-driven, parallel execution.
 
+## 🔗 Jump to important sections
+* [Project Structure & Files Explanation](#project-structure)
+* [Step 1: Project Setup](#step-1)
+* [Step 2: Record a Test Session (Codegen)](#step-2-codegen)
+* [Step 2.1: Scaling to Data-Driven & Parallel Execution](#step-2-1)
+* [Step 3: Running Tests & Generating Reports](#step-3)
+* [Step 4: Debugging with Traces (Video & Playback)](#step-4)
+* [Step 5: Git Commands & Workflow](#step-5)
+
+<a id="project-structure"></a>
 ## 📂 Project Structure & Files Explanation
 
 Here is an overview of the files included in this repository and what they do:
@@ -28,6 +38,7 @@ Here is an overview of the files included in this repository and what they do:
 
 ---
 
+<a id="step-1"></a>
 ## 🚀 Step 1: Project Setup
 
 Before you begin, make sure you have [Node.js](https://nodejs.org/) installed. Run the following commands in your terminal to initialize the project and install Playwright.
@@ -51,6 +62,7 @@ npm install -g cross-env
 ```
 ---
 
+<a id="step-2-codegen"></a>
 ## 🎥 Step 2: Record a Test Session (Codegen)
 
 Playwright can generate test code for you by recording your browser actions. 
@@ -64,6 +76,7 @@ npx playwright codegen <urllink> -o sevenCharVal_test.spec.ts
 
 ---
 
+<a id="step-2-1"></a>
 ## 🤖 Step 2.1: Scaling to Data-Driven & Parallel Execution
 
 Once you have your basic recorded steps (from Step 2), you can scale your tests to run multiple scenarios automatically instead of writing a new test for every single scenario.
@@ -101,6 +114,7 @@ The configuration in `config/playwright.config.ts` controls:
 *Note: When using parallel execution, multiple browser contexts and windows may open at once, drastically reducing the total test execution time.*
 
 
+<a id="step-3"></a>
 ## 🏃 Step 3: Running Tests & Generating Reports
 
 ### Basic Execution
@@ -146,6 +160,7 @@ npx playwright show-report playwright-report_v2
 
 ---
 
+<a id="step-4"></a>
 ## 🐛 Step 4: Debugging with Traces (Video & Playback)
 
 When a test fails (or you want to verify a bug test case), you can record a "trace". A trace captures a video, network requests, console logs, and a step-by-step DOM snapshot.
@@ -171,6 +186,7 @@ npx playwright show-trace test-results/sevenCharVal_test-test/trace.zip
 
 
 
+<a id="step-5"></a>
 ## 🔄 Step 5: Git Commands & Workflow
 
 This part contains the commands used to initialize the local project as a Git repository, connect it to GitHub, and push code updates.
@@ -201,3 +217,4 @@ git remote add origin https://github.com/yekoshy/Playwright_Record-n-Play.git
 
 # 6. Push the changes from your local repository to GitHub (-u sets the upstream link)
 git push -u origin main
+```
