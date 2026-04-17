@@ -58,7 +58,7 @@ npx playwright codegen <urllink> -o sevenCharVal_test.spec.ts
 
 ---
 
-##  Step 2.1: Scaling to Data-Driven & Parallel Execution
+## 🤖 Step 2.1: Scaling to Data-Driven & Parallel Execution
 
 Once you have your basic recorded steps (from Step 2), you can scale your tests to run multiple scenarios automatically instead of writing a new test for every single scenario.
 
